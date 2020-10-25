@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const requireDir = require('require-dir');
-//const jwt = require("jsonwebtoken");
-//const fs = require("fs");
+const jwt = require("jsonwebtoken");
+const fs = require("fs");
 
 mongoose.connect('mongodb+srv://admin:admin@ope.9fmou.mongodb.net/<dbname>?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true });
 requireDir('./src/models');
