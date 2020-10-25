@@ -70,4 +70,4 @@ app.use(cors());
 
 
 app.use('/', require('./src/routes'))
-app.listen('https://api-gerenciamento-personal.herokuapp.com/');
+app.listen(3001);
