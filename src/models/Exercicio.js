@@ -6,21 +6,40 @@ const ExercicioSchema = new mongoose.Schema({
         trim: true,
         required: true
     },
-    name: {
+    trainName: {
         type: String,
         trim: true,
         required: true
     },
-    description: {
+    exerciseId: {
         type: String,
         trim: true,
-        default: '',
-        required:true
+        required: true
     },
-    category:{
+    series: {
         type: String,
         trim: true,
-        required:true
+        required: true
+    },
+    qty: {
+        type: String,
+        trim: true,
+        required: true
+    },
+    unity: {
+        type: String,
+        trim: true,
+        required: true
+    },
+    additionalInfo: {
+        type: String,
+        trim: true,
+        required: false
+    },
+    TipoTreino: {
+        type: String,
+        trim: true,
+        required: true
     },
 
 })

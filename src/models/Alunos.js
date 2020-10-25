@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const AlunoSchema = new mongoose.Schema({
     id: {
-        default: "",
         type: Number,
         auto: true
     },
@@ -14,12 +13,10 @@ const AlunoSchema = new mongoose.Schema({
     age: {
         type: String,
         trim: true,
-        default: ''
     },
     document: {
         type: String,
         trim: true,
-        default: ''
     },
     email: {
         type: String,
@@ -32,7 +29,6 @@ const AlunoSchema = new mongoose.Schema({
     train_plan: {
         type: String,
         trim: true,
-        default: ''
     },
     active: {
         type: Boolean,
