@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
-
 mongooseAutoIncrement = require('mongoose-auto-increment');
+const connection = mongoose.createConnection('mongodb+srv://admin:admin@ope.9fmou.mongodb.net/<dbname>?retryWrites=true&w=majority');
+
+mongooseAutoIncrement.initialize(connection);
 
 const AlunoSchema = new mongoose.Schema({
     id: {
@@ -44,6 +46,12 @@ const AlunoSchema = new mongoose.Schema({
         trim: true,
     },
 })
+AlunoSchema.plugin(mongooseAutoIncrement.plugin, 'Alunos');
 
-AlunoSchema.plugin(mongooseAutoIncrement.plugin, { model: 'Aluno', field: 'id', startAt: 1, incrementBy: 1 })
+AlunoSchema.plugin(mongooseAutoIncrement.plugin, {
+    model: 'Alunos',
+    field: 'id',
+    startAt: 1,
+    incrementBy: 1
+})
 mongoose.model('Alunos', AlunoSchema);
