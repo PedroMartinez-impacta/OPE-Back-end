@@ -10,11 +10,11 @@ const AlunoSchema = new mongoose.Schema({
         trim: true,
         required: true
     },
-    age: {
+    document: {
         type: String,
         trim: true,
     },
-    document: {
+    birth_day: {
         type: String,
         trim: true,
     },
@@ -26,13 +26,21 @@ const AlunoSchema = new mongoose.Schema({
         //unique: false,
         //required: false// por enquanto 
     },
-    train_plan: {
+    contact: {
+        type: String,
+        lowercase: true,
+        trim: true,
+        //index: true,
+        //unique: false,
+        //required: false// por enquanto 
+    },
+    train_id: {
         type: String,
         trim: true,
     },
-    active: {
-        type: Boolean,
-        default: true
+    train_name: {
+        type: String,
+        trim: true,
     },
 })
 
