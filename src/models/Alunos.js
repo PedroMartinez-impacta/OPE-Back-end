@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
+mongooseAutoIncrement = require('mongoose-auto-increment');
+
 const AlunoSchema = new mongoose.Schema({
     id: {
         type: Number,
-        auto: true
     },
     name: {
         type: String,
@@ -44,4 +45,5 @@ const AlunoSchema = new mongoose.Schema({
     },
 })
 
+AlunoSchema.plugin(mongooseAutoIncrement.plugin, { model: 'Aluno', field: 'id', startAt: 1, incrementBy: 1 })
 mongoose.model('Alunos', AlunoSchema);
