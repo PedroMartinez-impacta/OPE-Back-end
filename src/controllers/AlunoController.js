@@ -31,13 +31,13 @@ module.exports = {
     },
 
     async update(req, res) {
-        const aluno = await Alunos.findOneAndUpdate(req.params.id, req.body);
+        const aluno = await Alunos.findOneAndUpdate({"id": req.params.id}, req.body);
 
         return res.json(aluno);
 
     },
     async delete(req, res) {
-        await Alunos.findOneAndDelete(req.params.id);
+        await Alunos.findOneAndDelete({"id": req.params.id});
 
         return res.send();
 

@@ -3,6 +3,9 @@ mongooseAutoIncrement = require('mongoose-auto-increment');
 const connection = mongoose.createConnection('mongodb+srv://admin:admin@ope.9fmou.mongodb.net/<dbname>?retryWrites=true&w=majority');
 
 const TreinoSchema = new mongoose.Schema({
+    // treino: {
+    //     type: Array
+    // },
     id: {
         type: String,
         trim: true,
