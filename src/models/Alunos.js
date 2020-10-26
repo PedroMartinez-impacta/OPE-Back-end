@@ -45,7 +45,7 @@ const AlunoSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
-})
+});
 AlunoSchema.plugin(mongooseAutoIncrement.plugin, 'Alunos');
 
 AlunoSchema.plugin(mongooseAutoIncrement.plugin, {
@@ -53,5 +53,5 @@ AlunoSchema.plugin(mongooseAutoIncrement.plugin, {
     field: 'id',
     startAt: 1,
     incrementBy: 1
-})
+});
 mongoose.model('Alunos', AlunoSchema);
