@@ -25,17 +25,11 @@ const AlunoSchema = new mongoose.Schema({
         type: String,
         lowercase: true,
         trim: true,
-        //index: true,
-        //unique: false,
-        //required: false// por enquanto 
     },
     contact: {
         type: String,
         lowercase: true,
         trim: true,
-        //index: true,
-        //unique: false,
-        //required: false// por enquanto 
     },
     train_id: {
         type: String,
@@ -45,6 +39,10 @@ const AlunoSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
+    gender:{
+        type: String,
+        trim: true
+    }
 });
 AlunoSchema.plugin(mongooseAutoIncrement.plugin, 'Alunos');
 

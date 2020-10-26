@@ -4,19 +4,29 @@ const Alunos = mongoose.model('Alunos');
 
 module.exports = {
     async index(req, res) {
-        const aluno = await Alunos.find();
+        try{
+            const aluno = await Alunos.find();
+    
+            for(let person of aluno){
+                person._id = -1;
+            }
 
-        for(let person of aluno){
-            person._id = -1;
+            return res.json(aluno);
+
+        }catch(error){
+            return res.status(500).end(String(error.message || error));
         }
-
-        return res.json(aluno);
     },
 
     async store(req, res) {
-        const aluno = await Alunos.create(req.body);
-
-        return res.json(aluno);
+        try{
+            
+            const aluno = await Alunos.create(req.body);
+    
+            return res.json(aluno);
+        }catch(error){
+            return res.status(500).end(String(error.message || error));
+        }
 
     },
 
