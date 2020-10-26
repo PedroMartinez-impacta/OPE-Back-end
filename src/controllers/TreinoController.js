@@ -35,11 +35,11 @@ module.exports = {
 
     },
     async showone(req, res) {
-        const aluno = await Alunos.findOne({ "id": req.params.id });
+        const treino = await Alunos.findOne({ "id": req.params.id });
 
-        aluno._id = -1
+        treino._id = -1
 
-        return res.json(aluno)
+        return res.json(treino)
     }
 
 };

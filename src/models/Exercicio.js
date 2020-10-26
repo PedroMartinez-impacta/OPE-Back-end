@@ -3,47 +3,19 @@ mongooseAutoIncrement = require('mongoose-auto-increment');
 const connection = mongoose.createConnection('mongodb+srv://admin:admin@ope.9fmou.mongodb.net/<dbname>?retryWrites=true&w=majority');
 
 const ExercicioSchema = new mongoose.Schema({
-    id: {
+    id:{
+        type: String
+    },
+    name: {
         type: String,
         trim: true,
         required: true
     },
-    trainName: {
+    description: {
         type: String,
         trim: true,
-        required: true
+        default: ''
     },
-    exerciseId: {
-        type: String,
-        trim: true,
-        required: true
-    },
-    series: {
-        type: String,
-        trim: true,
-        required: true
-    },
-    qty: {
-        type: String,
-        trim: true,
-        required: true
-    },
-    unity: {
-        type: String,
-        trim: true,
-        required: true
-    },
-    additionalInfo: {
-        type: String,
-        trim: true,
-        required: false
-    },
-    TipoTreino: {
-        type: String,
-        trim: true,
-        required: true
-    },
-
 });
 ExercicioSchema.plugin(mongooseAutoIncrement.plugin, 'Exercicios');
 
