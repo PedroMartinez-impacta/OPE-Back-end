@@ -1,7 +1,5 @@
 const express = require('express');
 const routes = express.Router();
-const jwt = require("jsonwebtoken");
-const fs = require("fs");
 
 const AlunoController = require('./controllers/AlunoController');
 const ExercicioController = require('./controllers/ExercicioController');
