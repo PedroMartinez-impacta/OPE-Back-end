@@ -4,20 +4,20 @@ const jwt = require("jsonwebtoken");
 const fs = require("fs");
 
 const AlunoController = require('./controllers/AlunoController')
-//routes.get('/alunos/:id', AlunoController.showone);
-routes.get('/alunos/:nome', AlunoController.showOneByName);
+//routes.get('/alunos/:nome', AlunoController.showOneByName);
+routes.get('/alunos/:id', AlunoController.showone);
 routes.get('/alunos', AlunoController.index);
 routes.post('/alunos/add', AlunoController.store);
 routes.put('/alunos/update/:id', AlunoController.update);
 routes.delete('/alunos/delete/:id', AlunoController.delete);
 
-routes.get('/treinos/:nome', AlunoController.showOneByName);
+routes.get('/treinos/:id', AlunoController.showone);
 routes.get('/treinos', AlunoController.index);
 routes.post('/treinos/add', AlunoController.store);
 routes.put('/treinos/update/:id', AlunoController.update);
 routes.delete('/treinos/delete/:id', AlunoController.delete);
 
-routes.get('/exercicios/:nome', AlunoController.showOneByName);
+routes.get('/exercicios/:id', AlunoController.showone);
 routes.get('/exercicios', AlunoController.index);
 routes.post('/exercicios/add', AlunoController.store);
 routes.put('/exercicios/update/:id', AlunoController.update);

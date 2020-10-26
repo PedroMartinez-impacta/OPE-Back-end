@@ -6,6 +6,10 @@ module.exports = {
     async index(req, res){
         const treino = await Treinos.find();
 
+        for(let train of treino){
+            train._id = -1;
+        }
+
         return res.json(treino);
     },
 
@@ -30,14 +34,12 @@ module.exports = {
         return res.send();
 
     },
-    // async showone(req,res){
-    //     const treino = await Treinos.findById(req.params.id);
-    //     return res.json(treino);
-    // },
+    async showone(req, res) {
+        const aluno = await Alunos.findOne({ "id": req.params.id });
 
-    async showOneByName(req,res){
-        const treino = await Treinos.findOne({"Nome":req.params.nome});
-        return res.json(treino)
+        aluno._id = -1
+
+        return res.json(aluno)
     }
 
 };
