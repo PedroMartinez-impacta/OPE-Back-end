@@ -6,10 +6,6 @@ module.exports = {
     async index(req, res) {
         const exercicio = await Exercicios.find();
 
-        for(let exercise of exercicio){
-            exercise._id = -1;
-        }
-
         return res.json(exercicio);
     },
 
@@ -22,7 +18,7 @@ module.exports = {
 
     async update(req, res) {
         const exercicio = await
-            Exercicios.findByIdAndUpdate(req.params.id, req.body, {
+            Exercicios.findOneAndUpdate({ "exerciseId": req.params.id }, req.body, {
                 new:
                     true
             })
@@ -31,7 +27,7 @@ module.exports = {
 
     },
     async delete(req, res) {
-        await Exercicios.findByIdAndDelete(req.params.id);
+        await Exercicios.findOneAndDelete({ "exerciseId": req.params.id });
 
         return res.send();
 
@@ -42,9 +38,7 @@ module.exports = {
     // }
 
     async showone(req, res) {
-        const exercicio = await Exercicios.findOne({ "id": req.params.id });
-
-        exercicio._id = -1
+        const exercicio = await Exercicios.findOne({ "exerciseId": req.params.id });
 
         return res.json(exercicio)
     }
