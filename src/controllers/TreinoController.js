@@ -38,32 +38,34 @@ module.exports = {
         return res.json(treino)
     },
 
-    async deleteTrein(req, res) {
+    // async deleteTrein(req, res) {
 
-        let objectTreinos = await Treinos.findOne({ "_id": req.params.id });
+    //     let objectTreinos = await Treinos.findOne({ "_id": req.params.id });
 
-        let update = objectTreinos.treinos.filter(item => item.treinId !== req.body.treinId);
+    //     let update = objectTreinos.treinos.filter(item => item.treinId !== req.body.treinId);
 
-        const objectToSend = { "treinos": update }
+    //     const objectToSend = { "treinos": update }
 
-        update = objectToSend;
+    //     update = objectToSend;
 
-        const updateTreinos = await Treinos.findOneAndUpdate({ "_id": req.params.id }, update)
+    //     const updateTreinos = await Treinos.findOneAndUpdate({ "_id": req.params.id }, update)
 
-        return res.json(updateTreinos)
-    },
+    //     return res.json(updateTreinos)
+    // },
     
     async updateTrein(req, res) {
 
-        let objectTreinos = await Treinos.findOne({ "_id": req.params.id });
+        //let objectTreinos = await Treinos.findOne({ "treinId": req.params.id });
 
-        let update = objectTreinos.treinos.filter(item => item.treinId !== req.body.treinId);
+        //objectTreinos.exercises.push(req.body.exercise);
 
-        const objectToSend = { "treinos": update }
+        let update = req.body;
 
-        update = objectToSend;
+        //const objectToSend = { "exercises": update }
 
-        const updateTreinos = await Treinos.findOneAndUpdate({ "_id": req.params.id }, update)
+        //update = objectToSend;
+
+        const updateTreinos = await Treinos.findOneAndUpdate({ "treinId": req.params.id }, update)
 
         return res.json(updateTreinos)
     }

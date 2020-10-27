@@ -3,14 +3,6 @@ mongooseAutoIncrement = require('mongoose-auto-increment');
 const connection = mongoose.createConnection('mongodb+srv://admin:admin@ope.9fmou.mongodb.net/<dbname>?retryWrites=true&w=majority');
 
 const TreinoSchema = new mongoose.Schema({
-    treinId: {
-        type: String,
-        trim: true,
-    },
-    trainName: {
-        type: String,
-        trim: true,
-    },
     exerciseId: {
         type: String,
         trim: true,
@@ -19,32 +11,32 @@ const TreinoSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
-    qty: {
+    duration: {
         type: String,
         trim: true,
     },
-    unity: {
+    day: {
         type: String,
         trim: true,
     },
-    additionalInfo: {
-        type: String,
-        trim: true,
-    },
-    treinType: {
-        type: String,
-        trim: true,
 
-    },
 });
 
 const TreinoBoxSchema = new mongoose.Schema({
-    treinos: [TreinoSchema]
+    treinId : {
+        type: String,
+        trim: true
+    },
+    treinName: {
+        type: String,
+        trim: true,
+    },
+    exercises: [TreinoSchema]
 });
 
-TreinoSchema.plugin(mongooseAutoIncrement.plugin, 'Treinos');
+TreinoBoxSchema.plugin(mongooseAutoIncrement.plugin, 'Treinos');
 
-TreinoSchema.plugin(mongooseAutoIncrement.plugin, {
+TreinoBoxSchema.plugin(mongooseAutoIncrement.plugin, {
     model: 'Treinos',
     field: 'treinId',
     startAt: 1,
