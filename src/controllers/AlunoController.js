@@ -6,10 +6,6 @@ module.exports = {
     async index(req, res) {
         try{
             const aluno = await Alunos.find();
-    
-            for(let person of aluno){
-                person._id = -1;
-            }
 
             return res.json(aluno);
 
