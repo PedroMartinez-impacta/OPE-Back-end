@@ -31,13 +31,13 @@ module.exports = {
     },
 
     async update(req, res) {
-        const aluno = await Alunos.findOneAndUpdate({"id": req.params.id}, req.body);
+        const aluno = await Alunos.findOneAndUpdate({"alunoId": req.params.id}, req.body);
 
         return res.json(aluno);
 
     },
     async delete(req, res) {
-        await Alunos.findOneAndDelete({"id": req.params.id});
+        await Alunos.findOneAndDelete({"alunoId": req.params.id});
 
         return res.send();
 
@@ -48,9 +48,9 @@ module.exports = {
     // }
 
     async showone(req, res) {
-        const aluno = await Alunos.findOne({ "id": req.params.id });
+        const aluno = await Alunos.findOne({ "alunoId": req.params.id });
 
-        aluno._id = -1
+        //aluno._id = -1
 
         return res.json(aluno)
     }

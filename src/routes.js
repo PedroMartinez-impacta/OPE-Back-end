@@ -14,7 +14,8 @@ routes.delete('/alunos/delete/:id', AlunoController.delete);
 routes.get('/treinos/:id', TreinoController.showone);
 routes.get('/treinos', TreinoController.index);
 routes.post('/treinos/add', TreinoController.store);
-routes.put('/treinos/update/:id', TreinoController.update);
+//routes.put('/treinos/update/:id', TreinoController.update);
+routes.put('/treinos/updatetrein/:id', TreinoController.deleteTrein);
 routes.delete('/treinos/delete/:id', TreinoController.delete);
 
 routes.get('/exercicios/:id', ExercicioController.showone);

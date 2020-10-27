@@ -5,7 +5,7 @@ const connection = mongoose.createConnection('mongodb+srv://admin:admin@ope.9fmo
 mongooseAutoIncrement.initialize(connection);
 
 const AlunoSchema = new mongoose.Schema({
-    id: {
+    alunoId: {
         type: Number,
     },
     name: {
@@ -48,7 +48,7 @@ AlunoSchema.plugin(mongooseAutoIncrement.plugin, 'Alunos');
 
 AlunoSchema.plugin(mongooseAutoIncrement.plugin, {
     model: 'Alunos',
-    field: 'id',
+    field: 'alunoId',
     startAt: 1,
     incrementBy: 1
 });
