@@ -32,7 +32,7 @@ module.exports = {
 
     },
     async delete(req, res) {
-        await Treinos.findByIdAndDelete(req.params.id);
+        await Treinos.findOneAndDelete({ "treinId": req.params.id });
 
         return res.send();
 
