@@ -7,6 +7,10 @@ const TreinoSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
+    exerciseName: {
+        type: String,
+        trim: true
+    },
     series: {
         type: String,
         trim: true,
@@ -23,7 +27,7 @@ const TreinoSchema = new mongoose.Schema({
 });
 
 const TreinoBoxSchema = new mongoose.Schema({
-    treinId : {
+    treinId: {
         type: String,
         trim: true
     },

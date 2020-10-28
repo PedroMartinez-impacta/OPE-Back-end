@@ -4,9 +4,14 @@ const Treinos = mongoose.model('Treinos');
 
 module.exports = {
     async index(req, res) {
-        const treino = await Treinos.find();
+        try {
+            const treino = await Treinos.find();
 
-        return res.json(treino);
+            return res.json(treino);
+
+        } catch (error) {
+            res.status(500).send(error.message || error)
+        }
     },
 
     async store(req, res) {
@@ -33,7 +38,7 @@ module.exports = {
 
     },
     async showone(req, res) {
-        const treino = await Treinos.findOne({ "id": req.params.id });
+        const treino = await Treinos.findOne({ "treinId": req.params.id });
 
         return res.json(treino)
     },
@@ -52,7 +57,7 @@ module.exports = {
 
     //     return res.json(updateTreinos)
     // },
-    
+
     async updateTrein(req, res) {
 
         //let objectTreinos = await Treinos.findOne({ "treinId": req.params.id });
