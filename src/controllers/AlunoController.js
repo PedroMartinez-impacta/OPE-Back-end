@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
+const express = require('express');
+
+const router = express.Router();
 
 const Alunos = mongoose.model('Alunos');
 
+
 module.exports = {
+
     async index(req, res) {
         try{
             const aluno = await Alunos.find();

@@ -16,5 +16,6 @@ app.use(cors());
 
 
 
+app.use('/auth', require('./src/authenticateRoutes'))
 app.use('/', require('./src/routes'))
 app.listen(process.env.PORT || 3001);

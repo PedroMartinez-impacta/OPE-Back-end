@@ -4,6 +4,11 @@ const routes = express.Router();
 const AlunoController = require('./controllers/AlunoController');
 const ExercicioController = require('./controllers/ExercicioController');
 const TreinoController = require('./controllers/TreinoController');
+const AuthController = require('./controllers/AuthController');
+
+const authMiddleware = require('./middlewares/auth');
+
+routes.use(authMiddleware);
 
 routes.get('/alunos/:id', AlunoController.showone);
 routes.get('/alunos', AlunoController.index);
@@ -24,5 +29,9 @@ routes.get('/exercicios', ExercicioController.index);
 routes.post('/exercicios/add', ExercicioController.store);
 routes.put('/exercicios/update/:id', ExercicioController.update);
 routes.delete('/exercicios/delete/:id', ExercicioController.delete);
+
+
+// routes.post('/auth/register', AuthController.register);
+// routes.post('/auth/authenticate', AuthController.authenticate);
 
 module.exports = routes;
