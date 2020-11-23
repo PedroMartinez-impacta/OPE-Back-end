@@ -8,6 +8,7 @@ const authConfig = require('../config/auth');
 
 
 const User = mongoose.model('Users');
+const Aluno = mongoose.model('Alunos');
 
 const { authenticate } = require('passport');
 
@@ -36,6 +37,9 @@ module.exports = {
                 return res.status(400).send({ error: 'User already exists' });
 
             const user = await User.create(req.body);
+            const aluno = await Aluno.findOne({ email })
+
+            //res.send(aluno.alunoId)
 
             user.password = undefined;
 
@@ -43,7 +47,7 @@ module.exports = {
                 expiresIn: 86400
             });
 
-            return res.send({ user, token })
+            return res.send({ user, token, alunoId: aluno.alunoId})
 
         } catch (err) {
             console.log(err)
@@ -109,7 +113,7 @@ module.exports = {
             res.send({ message: `Senha enviada para o email ${email}` });
 
         } catch (err) {
-            console.log({error: err.stack})
+            console.log({ error: err.stack })
         }
 
     }
