@@ -56,7 +56,7 @@ module.exports = {
 
         const user = await User.findOne({ email }).select('+password');
 
-        return res.send({user})
+        //return res.send({user})
 
         if (!user)
             return res.status(400).send({ error: 'User not found' });
