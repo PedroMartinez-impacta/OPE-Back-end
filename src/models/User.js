@@ -18,6 +18,10 @@ const UserSchema = new mongoose.Schema({
         required: true,
         select: false
     },
+    type:{
+        type: String,
+        lowercase: true
+    },
     createdAt: {
         type: Date,
         default: Date.now,

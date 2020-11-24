@@ -37,17 +37,19 @@ module.exports = {
                 return res.status(400).send({ error: 'User already exists' });
 
             const user = await User.create(req.body);
-            const aluno = await Aluno.findOne({ email })
+            const aluno = await Aluno.findOne({ email });
 
             //res.send(aluno.alunoId)
-
+            const type = user.type;
             user.password = undefined;
+            user.type = undefined;
+            user._id = undefined;
 
             const token = jwt.sign({ id: user.id }, authConfig.secret, {
                 expiresIn: 86400
             });
 
-            return res.send({ user, token, alunoId: aluno.alunoId})
+            return res.send({ alunoId: aluno.alunoId, trein_id: aluno.train_id, type: type, user, token })
 
         } catch (err) {
             console.log(err)
@@ -56,11 +58,27 @@ module.exports = {
     },
 
     async authenticate(req, res) {
-        const { email, password } = req.body;
+        const { email, password, type } = req.body;
 
         const user = await User.findOne({ email }).select('+password');
 
-        //return res.send({user})
+        if (type === "aluno") {
+            const aluno = await Aluno.findOne({ email });
+
+            if (!user)
+                return res.status(400).send({ error: 'User not found' });
+
+            if (!await bcrypt.compare(password, user.password))
+                return res.status(400).send({ error: 'Invalid password' });
+
+            user.password = undefined;
+
+            const token = jwt.sign({ id: user.id }, authConfig.secret, {
+                expiresIn: 86400
+            });
+
+            return res.send({ alunoId: aluno.alunoId, trein_id: aluno.train_id, type, user, token })
+        }
 
         if (!user)
             return res.status(400).send({ error: 'User not found' });
@@ -74,7 +92,7 @@ module.exports = {
             expiresIn: 86400
         });
 
-        res.send({ user, token });
+        return res.send({ type, user, token })
 
     },
 
