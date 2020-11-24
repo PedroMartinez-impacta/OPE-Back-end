@@ -92,7 +92,7 @@ module.exports = {
             expiresIn: 86400
         });
 
-        return res.send({ type, user, token })
+        return res.send({ user, token })
 
     },
 
