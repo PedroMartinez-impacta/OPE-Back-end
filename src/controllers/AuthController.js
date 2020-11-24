@@ -77,7 +77,7 @@ module.exports = {
                 expiresIn: 86400
             });
 
-            return res.send({ alunoId: aluno.alunoId, trein_id: aluno.train_id, type, user, token })
+            return res.send({ alunoId: aluno.alunoId, trein_id: aluno.train_id, user, token })
         }
 
         if (!user)
